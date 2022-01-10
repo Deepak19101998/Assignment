@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       {state?.isLoggedIn ? (
         <div className="navbar-outer-div">
-          <div className="w-10">
+          <div className="w-20">
             <NavLink
               to="/home"
               className='logo-btn'

@@ -12,23 +12,23 @@ const Navbar = () => {
           <div className="w-10">
             <NavLink
               to="/home"
-              style={{ fontSize:"22px", textDecoration: "none" }}
+              className='logo-btn'
             >
               LOGO
             </NavLink>
           </div>
           <div className="w-10">
-            <NavLink to="/home" style={{ textDecoration: "none" }}>
+            <NavLink to="/home" className='nav-btn'>
               Home
             </NavLink>
           </div>
           <div className="w-10">
-            <NavLink to="/task" style={{ textDecoration: "none" }}>
+            <NavLink to="/task" className='nav-btn'>
               Tasks
             </NavLink>
           </div>
           <div className="w-10">
-            <NavLink to="/user" style={{ textDecoration: "none" }}>
+            <NavLink to="/user" className='nav-btn'>
               User
             </NavLink>
           </div>

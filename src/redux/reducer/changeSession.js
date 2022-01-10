@@ -1,5 +1,4 @@
 const initialState = JSON.parse(localStorage.getItem("loginDetails"));
-// const initialState = 0;
 
 const changeSession = (state = initialState, action) => {
   switch (action.type) {
@@ -7,6 +6,7 @@ const changeSession = (state = initialState, action) => {
       return { ...state, isLoggedIn: true };
     case "LOGOUT":
       return { ...state, isLoggedIn: false };
+    
     default:
       return state;
   }

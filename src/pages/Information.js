@@ -25,10 +25,10 @@ const Information = ({ dropdownValue }) => {
         );
         break;
       }
-      case "Building": {
+      case "Task": {
         content = (
           <>
-            <h1>What is Building?</h1>
+            <h1>What is Task?</h1>
             <p>
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. The
@@ -46,10 +46,10 @@ const Information = ({ dropdownValue }) => {
 
         break;
       }
-      case "Apartment": {
+      case "User": {
         content = (
           <>
-            <h1>What is Apartment?</h1>
+            <h1>What is User?</h1>
             <p>
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
@@ -69,10 +69,10 @@ const Information = ({ dropdownValue }) => {
 
         break;
       }
-      case "Location": {
+      case "Login": {
         content = (
           <>
-            <h1>What is Location</h1>
+            <h1>What is Login?</h1>
             <p>
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, by

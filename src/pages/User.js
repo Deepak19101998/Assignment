@@ -15,6 +15,7 @@ const User = () => {
   const [newPassword, setNewPassword] = useState("");
   // This state is used manage the data conditionally
   const [show, setShow] = useState(true);
+  const [showIcon, setShowIcon] = useState(true);
   const history = useHistory()
   
   useEffect(() => {
@@ -34,10 +35,10 @@ const User = () => {
   // This function is used to logout
   const handleLogout = (e) => {
     e.preventDefault();
-    alert("You have been successfully logout...");
-    localStorage.setItem("loginDetails",JSON.stringify({...state,isLoggedIn:false}))
-    changeLogoutStatus();
+    alert("You have been logout successfully...");
+    localStorage.setItem("loginDetails",JSON.stringify({...userDetails,isLoggedIn:false}))
     history.push("/")
+    changeLogoutStatus();
   };
 
   // This function is used to change the password
@@ -47,7 +48,7 @@ const User = () => {
       "loginDetails",
       JSON.stringify({ ...userDetails, password: newPassword })
     );
-    alert("Password has been successfully changed...");
+    alert("Password has been changed successfully...");
     setShow(true)
   };
 
@@ -65,14 +66,16 @@ const User = () => {
       ) : (
         <div className="d-flex">
           <div className="loggedin-text">New Password : </div>
-          <div className="m-10">
+          <div style={{position:'relative'}} className="m-10">
             <input
-              type="password"
+              type={showIcon ? "password": "text"}
               value={newPassword}
               required
               onChange={(e) => setNewPassword(e.target.value)}
               className='input-tag-user'
+              style={{paddingRight:'40px'}}
             />
+            <span className="show-pass" onClick={()=>setShowIcon(!showIcon)}>{showIcon ? "Show" : 'Hide'}</span>
           </div>
         </div>
       )}

@@ -12,6 +12,8 @@ const Login = () => {
   });
   const history = useHistory();
   const dispatch = useDispatch();
+  const [showIcon, setShowIcon] = useState(true);
+  const userDetails = JSON.parse(localStorage.getItem("loginDetails")) || "";
   const state = useSelector((state) => state.changeSession);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const Login = () => {
       }
     } else {
     }
-  }, [state,history]);
+  }, [state]);
 
   const [error, setError] = useState("");
   // This function is used to get the input values onChange
@@ -40,15 +42,15 @@ const Login = () => {
   const handleSubmit = () => {
     setError("");
     if (
-      state?.username === formDetails.username &&
-      state?.password === formDetails.password
+      userDetails?.username === formDetails.username &&
+      userDetails?.password === formDetails.password
     ) {
       setFormDetails({
         username: "",
         password: "",
         isLoggedIn: false,
       });
-      localStorage.setItem("loginDetails",JSON.stringify({...state,isLoggedIn:true}))
+      localStorage.setItem("loginDetails",JSON.stringify({...userDetails,isLoggedIn:true}))
       history.push("/home");
       changeLoginStatus();
       
@@ -73,18 +75,23 @@ const Login = () => {
           required
           value={formDetails.username}
           onChange={handleChange}
+          style={{paddingRight:'40px'}}
         />
       </div>
       <div className="d-flex">
         <div className="loggedin-text">Password : </div>
+        <div style={{position:'relative'}}>
         <input
-          type="password"
+          type={showIcon ? "password": "text"}
           className="input-tag"
           name="password"
           required
           value={formDetails.password}
           onChange={handleChange}
+          style={{paddingRight:'40px'}}
         />
+        <span className='show-pass' style={{top:14,right:15}} onClick={()=>setShowIcon(!showIcon)}>{showIcon ? "Show" : 'Hide'}</span>
+        </div>
       </div>
       <button type="button" className="login-btn" onClick={handleSubmit}>
         Login

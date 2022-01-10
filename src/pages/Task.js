@@ -9,8 +9,8 @@ const Task = () => {
   );
   const state = useSelector((state) => state.changeSession);
   const [show, setShow] = useState(false);
-  const buttons =['true','false']
-  const[radioBtnValue,setRadioBtnValue] = useState()
+  const buttons = ["true", "false"];
+  const [radioBtnValue, setRadioBtnValue] = useState();
   const [newTask, setNewTask] = useState({
     id: "",
     userId: "",
@@ -35,10 +35,10 @@ const Task = () => {
         .get("https://jsonplaceholder.typicode.com/todos")
         .then((response) => {
           setData(response.data);
-          console.log(response.data)
           localStorage.setItem("data", JSON.stringify(response.data));
-        }).catch((error)=>{
-          console.log(error)
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }, []);
@@ -51,9 +51,9 @@ const Task = () => {
   // This function is used to add the task into record
   const addTask = (e) => {
     e.preventDefault();
-    
-    const newData = {...newTask,completed:radioBtnValue}
-    setNewTask(newData)
+
+    const newData = { ...newTask, completed: radioBtnValue };
+    setNewTask(newData);
     saveData([...data, newData]);
     setShow(false);
     setNewTask({
@@ -87,7 +87,7 @@ const Task = () => {
               <td className="td-border-bottom">{item.id}</td>
               <td className="td-border-bottom">{item.title}</td>
               <td className="td-border-bottom">
-                {item.completed =='true' ? "True" : "False"}
+                {item.completed == "true" ? "True" : "False"}
               </td>
               <td>
                 <button
@@ -103,7 +103,7 @@ const Task = () => {
         </tbody>
       </table>
       {show ? (
-        <div>
+        <div >
           <input
             type="number"
             name="id"
@@ -128,19 +128,19 @@ const Task = () => {
             onChange={handleChange}
             className="input-tag"
           />
-          Completed
-          {buttons.map((btn,index)=>(
-            <div key={index} className='d-flex'>
-            <input type="radio" name="completed" value={btn} onChange={(e)=>setRadioBtnValue(e.target.value)}/>
-            {btn}
-            </div>
+          <span>Completed</span>
+          {buttons.map((btn, index) => (
+            <span key={index} >
+              <input
+                type="radio"
+                name="completed"
+                value={btn}
+                onChange={(e) => setRadioBtnValue(e.target.value)}
+              />
+              {btn}
+            </span>
+            
           ))}
-
-          <h1>{radioBtnValue}</h1>
-          
-          {/* True
-          <input type="radio" name="completed" value="False" onChange={handleChange}/>
-          False */}
           <div className="d-flex">
             <button type="submit" className="submit-btn" onClick={addTask}>
               Submit

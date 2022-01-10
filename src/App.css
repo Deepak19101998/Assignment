@@ -151,7 +151,10 @@
   border-radius: 10px;
 }
 .w-10 {
-  width: 10%;
+  width: 15%;
+}
+.w-20{
+  width:20%
 }
 .nav-btn {
   text-decoration: none;
@@ -159,7 +162,7 @@
   color: white;
 }
 .logo-btn {
-  font-size: 25px;
+  font-size: 22px;
   color: white;
   text-decoration: none;
 }
